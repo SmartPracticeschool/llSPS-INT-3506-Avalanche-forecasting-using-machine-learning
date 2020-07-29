@@ -1,0 +1,56 @@
+<html>    
+    <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>
+        body{
+            padding-left: 225px;
+            padding-bottom:50px;
+            padding-top: 50px;
+            background-image: url('https://coloradosun.com/wp-content/uploads/sites/15/2019/03/obs_55403_25359.jpg?w=1024');
+            background-color: rgba(250, 250, 250, 0.842);
+            border-radius: 10px;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="card w-75">
+            <div class="card bg-dark text-white">
+            <h5 class="font-weight-bold pt-4 text-center">Avalanche Forecasting Using Machine Learning</h5></div>
+            <div class="card-body">
+            <form action="{{ url_for('y_predict')}}" method="post">
+                <div class="form-group">
+                <div class="form-group">
+                    <label for="slope">Slope Angle</label>
+                    <input type="number" name="slope" placeholder="Slope" class="form-control" id="slope" required="required"/>
+                </div>
+                    <label for="density">Forest Density</label>
+                    <select id="density" name="density" class="form-control" required="required">
+                            <option value="">Choose Density</option>
+                            <option value=1>Low Density</option>
+                            <option value=2>Medium Density</option>
+                            <option value=0>Highly Dense</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="snowdensity">Denisty Value of Snow</label>
+                    <input type="number" name="snowdensity" placeholder="Density of Snow" class="form-control" id="snowdensity" required="required"/>
+                </div>
+                <div class="form-group">
+                    <label for="air">Air Temprature</label>
+                    <input type="number" name="air" placeholder="Air temprature" class="form-control" id="air" required="required"/>
+                </div>
+                <div class="form-group">
+                    <label for="wind">Wind Speed</label>
+                    <input type="number" name="wind" placeholder="Wind Speed" class="form-control" id="wind" required="required"/>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Predict</button>
+            </form>
+            Result:<div class="alert alert-secondary" role="alert"><h6><b>{{ prediction_text }}</b></h6></div>
+          </div>
+        </div>
+    </body>
+</html>
